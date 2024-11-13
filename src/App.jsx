@@ -1,11 +1,12 @@
 // App.jsx
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import ProductPage from './pages/ProductPage';
 import CartPage from './pages/CartPage';
 import Contact from './components/Contact';
 import Register from './components/Register';
 import Login from './components/Login';
+import './App.css';
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -44,6 +45,25 @@ const App = () => {
   return (
     <Router>
       <div className="app">
+        {/* Navigation Bar */}
+        <nav className="navbar">
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/register">Register</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/cart">Cart ({cartItems.length})</Link>
+            </li>
+          </ul>
+        </nav>
+
+        {/* Routes */}
         <Routes>
           <Route
             path="/"
@@ -59,13 +79,17 @@ const App = () => {
               />
             }
           />
-           <Route path="/" element={<h1>FARMART</h1>} />
-        
-           <Route path="/contact" element={<Contact />} />
-           <Route path="/register" element={<Register />} />
-           <Route path="/login" element={<Login />} />
-           
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
+
+        {/* Footer with Contact Link */}
+        <footer className="footer">
+          <p>
+            Have questions? <Link to="/contact">Contact Us</Link>
+          </p>
+        </footer>
       </div>
     </Router>
   );
