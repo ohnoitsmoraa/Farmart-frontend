@@ -1,48 +1,60 @@
 // App.jsx
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ProductPage from './pages/ProductPage';
 import CartPage from './pages/CartPage';
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
 
+  // Function to add an item to the cart or increase quantity if already in cart
   const addToCart = (animal) => {
     setCartItems((prevItems) => {
-      const itemExists = prevItems.find((item) => item.id === animal.id);
-      if (itemExists) {
+      const itemInCart = prevItems.find((item) => item.id === animal.id);
+
+      if (itemInCart) {
+        // Update quantity if already in cart
         return prevItems.map((item) =>
           item.id === animal.id ? { ...item, quantity: item.quantity + 1 } : item
         );
+      } else {
+        // Add new item to cart with quantity of 1
+        return [...prevItems, { ...animal, quantity: 1 }];
       }
-      return [...prevItems, { ...animal, quantity: 1 }];
     });
   };
 
-  const updateQuantity = (id, quantity) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) => (item.id === id ? { ...item, quantity } : item))
-    );
-  };
-
+  // Function to remove an item from the cart
   const removeFromCart = (id) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
+  // Function to adjust the quantity of an item in the cart
+  const updateQuantity = (id, quantity) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item
+      )
+    );
+  };
+
   return (
     <Router>
-      <div className="App">
-        <header className="flex justify-between p-4 bg-green-800 text-white">
-          <h1 className="text-xl font-bold">FarmArt</h1>
-          <Link to="/cart" className="cart-button">
-            🛒 Cart <span className="cart-count">{cartItems.reduce((acc, item) => acc + item.quantity, 0)}</span>
-          </Link>
-        </header>
+      <div className="app">
         <Routes>
-          <Route path="/" element={<ProductPage addToCart={addToCart} />} />
+          <Route
+            path="/"
+            element={<ProductPage addToCart={addToCart} cartItems={cartItems} />}
+          />
           <Route
             path="/cart"
-            element={<CartPage cartItems={cartItems} updateQuantity={updateQuantity} removeFromCart={removeFromCart} />}
+            element={
+              <CartPage
+                cartItems={cartItems}
+                updateQuantity={updateQuantity}
+                removeFromCart={removeFromCart}
+              />
+            }
           />
         </Routes>
       </div>
