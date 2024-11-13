@@ -12,7 +12,7 @@ const CartPage = ({ cartItems, updateQuantity, removeFromCart }) => {
       <h1 className="text-3xl font-bold text-green-800 mb-4">Cart</h1>
 
       {/* Cart Items */}
-      <div className="space-y-4">
+      <div className="space-y-4 w-3/4">
         {cartItems.map((item) => (
           <div key={item.id} className="flex items-center justify-between border rounded-lg p-4 bg-white shadow-md">
             <div className="flex items-center space-x-4">
