@@ -25,7 +25,6 @@ function Register() {
     setLoading(true);
     setError('');
 
-    // Validate inputs
     if (!formData.name || !formData.email || !formData.password) {
       setError('All fields are required.');
       setLoading(false);
@@ -39,7 +38,6 @@ function Register() {
       return;
     }
 
-    // Mock API response for successful registration
     const mockResponse = { success: true, message: 'Registration successful!' };
     setLoading(false);
 
