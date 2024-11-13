@@ -16,7 +16,7 @@ const CartPage = ({ cartItems, updateQuantity, removeFromCart }) => {
         {cartItems.map((item) => (
           <div key={item.id} className="flex items-center justify-between border rounded-lg p-4 bg-white shadow-md">
             <div className="flex items-center space-x-4">
-              <img src={item.image} alt={item.name} className="h-16 w-16 object-cover rounded-md" />
+              
               <div>
                 <h3 className="text-xl font-semibold">{item.name}</h3>
                 <p className="text-green-800 font-bold">Kes {item.price}</p>
