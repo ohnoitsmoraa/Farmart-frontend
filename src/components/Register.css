@@ -1,0 +1,170 @@
+.register-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+  }
+  
+  .image-container {
+    flex: 1;
+    margin-right: 20px;
+    background-image: url('https://cdn.pixabay.com/photo/2022/10/12/17/02/goat-7874883_960_720.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 100%; /* Prevent image container from overflowing */
+  }
+  
+  /* Form container styles */
+  .form-container {
+    flex: 1;
+    max-width: 500px;
+    margin-left: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 100%; /* Ensure the form stays within container on small screens */
+  }
+  
+  /* Title */
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600; /* Make the heading a bit bolder */
+  }
+  
+  /* Label styles */
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+  
+  /* Input and Select field styling */
+  input, select {
+    width: 100%; 
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box; 
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Input & Select field focus styles */
+  input:focus, select:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); 
+  }
+  
+  /* Button styles */
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; 
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  /* Button hover effect */
+  button:hover:not(:disabled) {
+    background-color: #45a049;
+  }
+  
+  /* Disabled button */
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Error message */
+  .error {
+    color: red;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+    background-color: rgba(255, 0, 0, 0.1); /* Light background for error */
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  /* Responsive styles for small screens */
+  @media (max-width: 768px) {
+    .register-container {
+      flex-direction: column;
+      padding: 10px; /* Adjust padding for mobile */
+    }
+  
+    /* Image container adjustments */
+    .image-container {
+      margin-bottom: 20px;
+      height: 200px; /* Restrict image height on mobile for better layout */
+    }
+  
+    /* Form container adjustments */
+    .form-container {
+      margin-left: 0;
+      max-width: 100%;
+    }
+  
+    /* Adjust heading size for mobile */
+    h1 {
+      font-size: 20px;
+    }
+  
+    /* Increase input field padding on small screens for easier typing */
+    input, select {
+      padding: 12px;
+      font-size: 18px;
+    }
+  
+    /* Increase button size for better usability on smaller screens */
+    button {
+      font-size: 18px;
+      padding: 12px;
+    }
+  }
+  
+  /* Further adjustments for very small screens (e.g., phones under 480px) */
+  @media (max-width: 480px) {
+    .register-container {
+      padding: 5px;
+    }
+  
+    .image-container {
+      height: 180px; /* Further reduce image size */
+    }
+  
+    .form-container {
+      padding: 15px;
+    }
+  
+    h1 {
+      font-size: 18px;
+    }
+  
+    input, select {
+      padding: 14px;
+      font-size: 18px;
+    }
+  
+    button {
+      padding: 14px;
+      font-size: 20px;
+    }
+  }
+  

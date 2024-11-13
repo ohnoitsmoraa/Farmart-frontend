@@ -1,0 +1,122 @@
+.contact-image-container {
+    width: 45%;
+    min-height: 400px;  /* Only keep min-height */
+    background-image: url('https://images.unsplash.com/photo-1585243922340-f8cf7d03b94c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjg1OXwwfDF8c2VhY3J8MXx8d2hpdGUgYW5kIGJsYWNrIGRpY2V8ZW58MHx8fHwxNjk2MTc0ODc2&ixlib=rb-1.2.1&q=80&w=1080');
+    background-size: cover;  /* Or consider using contain if background image isn't showing correctly */
+    background-position: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .contact-heading {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+  
+  .contact-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    align-items: center;  /* Vertically centers content if wrapped */
+  }
+  
+  .contact-form-container {
+    width: 45%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-form-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contact-form-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .contact-form-container input,
+  .contact-form-container textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .contact-form-container input:focus,
+  .contact-form-container textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .contact-form-container button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact-form-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  .contact-form-container button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+  
+  .contact-form-container p {
+    color: #28a745;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-content {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .contact-form-container,
+    .contact-image-container {
+      width: 80%; 
+      margin-bottom: 20px;
+    }
+  
+    .contact-heading {
+      font-size: 1.5rem; 
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .contact-heading {
+      font-size: 1.25rem; 
+    }
+  
+    .contact-form-container input,
+    .contact-form-container textarea {
+      font-size: 0.875rem;
+    }
+  
+    .contact-form-container button {
+      padding: 8px 16px; 
+    }
+  }
+  
