@@ -27,7 +27,7 @@ function Contact() {
       } else {
         setStatus('Failed to send message. Please fill all fields.');
       }
-    }, 1500); // Mocking delay
+    }, 1500); 
   };
 
   return (

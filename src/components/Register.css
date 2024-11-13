@@ -17,10 +17,9 @@
     height: 100%;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 100%; /* Prevent image container from overflowing */
+    max-width: 100%; 
   }
   
-  /* Form container styles */
   .form-container {
     flex: 1;
     max-width: 500px;
@@ -29,25 +28,22 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 100%; /* Ensure the form stays within container on small screens */
+    max-width: 100%; 
   }
   
-  /* Title */
   h1 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 24px;
-    font-weight: 600; /* Make the heading a bit bolder */
+    font-weight: 600; 
   }
   
-  /* Label styles */
   label {
     font-weight: bold;
     margin-bottom: 5px;
     display: inline-block;
   }
   
-  /* Input and Select field styling */
   input, select {
     width: 100%; 
     padding: 10px;
@@ -59,14 +55,12 @@
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
   
-  /* Input & Select field focus styles */
   input:focus, select:focus {
     border-color: #4CAF50;
     outline: none;
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); 
   }
   
-  /* Button styles */
   button {
     background-color: #4CAF50;
     color: white;
@@ -80,73 +74,62 @@
     margin-top: 10px;
   }
   
-  /* Button hover effect */
   button:hover:not(:disabled) {
     background-color: #45a049;
   }
   
-  /* Disabled button */
   button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
   }
   
-  /* Error message */
   .error {
     color: red;
     text-align: center;
     margin-bottom: 15px;
     font-weight: bold;
-    background-color: rgba(255, 0, 0, 0.1); /* Light background for error */
+    background-color: rgba(255, 0, 0, 0.1); 
     padding: 10px;
     border-radius: 5px;
   }
   
-  /* Responsive styles for small screens */
   @media (max-width: 768px) {
     .register-container {
       flex-direction: column;
-      padding: 10px; /* Adjust padding for mobile */
+      padding: 10px; 
     }
-  
-    /* Image container adjustments */
-    .image-container {
+      .image-container {
       margin-bottom: 20px;
-      height: 200px; /* Restrict image height on mobile for better layout */
+      height: 200px; 
     }
   
-    /* Form container adjustments */
     .form-container {
       margin-left: 0;
       max-width: 100%;
     }
   
-    /* Adjust heading size for mobile */
     h1 {
       font-size: 20px;
     }
   
-    /* Increase input field padding on small screens for easier typing */
     input, select {
       padding: 12px;
       font-size: 18px;
     }
   
-    /* Increase button size for better usability on smaller screens */
     button {
       font-size: 18px;
       padding: 12px;
     }
   }
   
-  /* Further adjustments for very small screens (e.g., phones under 480px) */
   @media (max-width: 480px) {
     .register-container {
       padding: 5px;
     }
   
     .image-container {
-      height: 180px; /* Further reduce image size */
+      height: 180px; 
     }
   
     .form-container {

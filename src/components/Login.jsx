@@ -11,7 +11,7 @@ function Login() {
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
-    setRole(urlParams.get('role')); // Getting role from URL if available
+    setRole(urlParams.get('role'));
   }, [location.search]);
 
   const handleChange = (e) => {
@@ -27,13 +27,12 @@ function Login() {
     setLoading(true);
     setError('');
 
-    // Mock response for login
     const mockResponse = { success: true, message: 'Login successful!' };
 
     setLoading(false);
 
     if (mockResponse.success) {
-      navigate(`/${role}-dashboard`);  // Redirect to dashboard based on role
+      navigate(`/${role}-dashboard`); 
     } else {
       setError(mockResponse.message || 'Login failed. Please check your credentials.');
     }

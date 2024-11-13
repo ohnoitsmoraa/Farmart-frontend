@@ -1,8 +1,8 @@
 .contact-image-container {
     width: 45%;
-    min-height: 400px;  /* Only keep min-height */
+    min-height: 400px;  
     background-image: url('https://images.unsplash.com/photo-1585243922340-f8cf7d03b94c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjg1OXwwfDF8c2VhY3J8MXx8d2hpdGUgYW5kIGJsYWNrIGRpY2V8ZW58MHx8fHwxNjk2MTc0ODc2&ixlib=rb-1.2.1&q=80&w=1080');
-    background-size: cover;  /* Or consider using contain if background image isn't showing correctly */
+    background-size: cover;  
     background-position: center;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -28,7 +28,7 @@
     max-width: 1200px;
     margin-top: 20px;
     flex-wrap: wrap;
-    align-items: center;  /* Vertically centers content if wrapped */
+    align-items: center;  
   }
   
   .contact-form-container {
