@@ -1,67 +1,58 @@
-/* General page layout */
 .contact-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 2rem;
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; 
     min-height: 100vh;
+    width: 75vw; 
+    margin: 0 auto; 
+    box-sizing: border-box; 
 }
 
-/* Centered "Contact Us" heading */
 .contact-heading {
     font-size: 2.5rem;
-    color: #1c7430;
+    color: #1c7430; 
     margin-bottom: 2rem;
     text-align: center;
     font-weight: bold;
 }
 
-/* Main contact form and image container */
 .form-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
+    align-items: flex-start;
+    gap: 3rem; 
     width: 100%;
-    max-width: 1200px;
     margin-top: 2rem;
-    flex-wrap: wrap;
+    flex-wrap: wrap; 
 }
 
-/* Left side image container */
 .left-container {
-    flex: 1;
-    max-width: 500px;
-    min-width: 250px;
+    flex: 1 1 45%; 
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-bottom: 2rem;
 }
 
 .contact-image {
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
     height: auto;
     border-radius: 8px;
-    object-fit: cover;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Right side form container */
 .right-container {
-    flex: 2;
-    max-width: 600px;
-    padding: 1rem;
+    flex: 1 1 50%; 
+    padding: 1.5rem;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 1rem;
+    width: 100%; 
 }
 
-/* Get in touch with FarmArt */
+
 .right-container h1 {
     font-size: 2rem;
     color: #1c7430;
@@ -69,7 +60,6 @@
     font-weight: bold;
 }
 
-/* Contact Us Form */
 form {
     display: flex;
     flex-direction: column;
@@ -89,9 +79,9 @@ form {
 .input-field input,
 .input-field textarea {
     width: 100%;
-    padding: 1rem; /* Increased padding */
+    padding: 0.8rem;
     border: 1px solid #2f9e44;
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 4px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
 }
@@ -102,7 +92,6 @@ form {
     outline: none;
 }
 
-/* Submit button styling */
 .submit-btn {
     padding: 0.8rem 1.5rem;
     background-color: #2f9e44;
@@ -111,8 +100,8 @@ form {
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.3s ease;
     margin-top: 1rem;
+    transition: background-color 0.3s ease;
 }
 
 .submit-btn:hover {
@@ -124,7 +113,6 @@ form {
     cursor: not-allowed;
 }
 
-/* Status message styling */
 .status-message {
     text-align: center;
     margin-top: 1rem;
@@ -133,9 +121,9 @@ form {
     color: #2f9e44;
 }
 
-/* Media queries for responsiveness */
 @media (max-width: 768px) {
     .contact-container {
+        width: 90vw;
         padding: 1rem;
     }
 
@@ -144,18 +132,12 @@ form {
         gap: 1rem;
     }
 
-    .left-container {
-        justify-content: center;
-        margin-bottom: 2rem;
-    }
-
+    .left-container,
     .right-container {
-        width: 100%;
-        max-width: 100%;
+        width: 100%; 
     }
 
-    .submit-btn {
-        padding: 1rem 2rem;
-        font-size: 1.2rem;
+    .left-container {
+        margin-bottom: 1.5rem; 
     }
 }

@@ -1,4 +1,3 @@
-/* Existing styles for form layout */
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +16,7 @@
   .login-container {
     display: flex;
     width: 90%;
-    max-width: 900px;
+    max-width: 1115px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -27,18 +26,18 @@
     flex: 1;
     background: url('https://images.unsplash.com/photo-1506748686218-351ed0cc6cd9') no-repeat center center/cover;
     height: 100%;
-    min-height: 400px;
+    min-height: 250px;
   }
   
   .form-container {
     flex: 1;
-    padding: 40px;
+    padding: 100px;
     background-color: #ffffff;
   }
   
   h1 {
     margin-bottom: 20px;
-    font-size: 28px;
+    font-size: 40px;
     color: #4CAF50;
   }
   
@@ -90,7 +89,6 @@
     outline: none;
   }
   
-  /* Role selection buttons styles */
   .role-selection {
     display: flex;
     justify-content: space-between;
@@ -122,7 +120,6 @@
     outline: none;
   }
   
-  /* Media Queries for responsiveness */
   
-  /* Tablet and Mobile responsive styling remains the same */
+
   
