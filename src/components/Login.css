@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f8f4;
+  }
+  
+  .login-container {
+    display: flex;
+    width: 90%;
+    max-width: 1115px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .image-container {
+    flex: 1;
+    background: url('https://images.unsplash.com/photo-1506748686218-351ed0cc6cd9') no-repeat center center/cover;
+    height: 100%;
+    min-height: 250px;
+  }
+  
+  .form-container {
+    flex: 1;
+    padding: 100px;
+    background-color: #ffffff;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+    font-size: 40px;
+    color: #4CAF50;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #388E3C;
+  }
+  
+  input {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #81C784;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #388E3C;
+  }
+  
+  input:focus {
+    border-color: #4CAF50;
+    outline: none;
+  }
+  
+  button {
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #388E3C;
+  }
+  
+  button:active {
+    background-color: #2C6F28;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  .role-selection {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .role-selection button {
+    flex: 1;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .role-selection button:hover {
+    background-color: #388E3C;
+  }
+  
+  .role-selection button:active {
+    background-color: #2C6F28;
+  }
+  
+  .role-selection button:focus {
+    outline: none;
+  }
+  
+  
+
+  
