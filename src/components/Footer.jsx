@@ -16,9 +16,17 @@ function footer() {
 					<div className=" items-center justify-center flex flex-col gap-2 ">
 						<h3 className='h3'>Enter email here </h3>
 					</div>
-                    <div>
-                        <button type='submit' id='subscribe_button'>Subscribe</button>
+                    <div id='subscribe_button'>
+                        <button type='submit'>Subscribe</button>
                     </div>
+					<div id='mini_nav'>
+						<h3>Home</h3>
+						<h3>About</h3>
+						<h3>Contact</h3>
+					</div>
+					<div className="bottom_nav">
+						<p>© 2024 FarmArt. All Rights Reserved.</p>
+					</div>
 				</div>
 			</footer>
     </div>

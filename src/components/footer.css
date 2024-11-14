@@ -16,3 +16,14 @@
     border-radius: 8px;
     display: inline-block;
 }
+
+#mini_nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+#mini_nav h3{
+    margin: 0;
+}
