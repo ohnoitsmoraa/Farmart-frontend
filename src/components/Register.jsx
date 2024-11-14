@@ -1,135 +1,75 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Register.css';
-import yourImage from '../assets/Register.jpg';
 
-function Register() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    role: 'farmer',
-  });
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+const RegisterPage = () => {
+  const [isFarmer, setIsFarmer] = useState(true);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-
-    if (error) {
-      setError('');
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-
-    if (!formData.name || !formData.email || !formData.password) {
-      setError('All fields are required.');
-      setLoading(false);
-      return;
-    }
-
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    if (!emailPattern.test(formData.email)) {
-      setError('Please enter a valid email address.');
-      setLoading(false);
-      return;
-    }
-
-    // Simulate registration API response
-    const mockResponse = { success: true, message: 'Registration successful!' };
-
-    setLoading(false);
-
-    if (mockResponse.success) {
-      setFormData({ name: '', email: '', password: '', role: 'farmer' });
-      navigate(`/login?role=${formData.role}`);
-    } else {
-      setError(mockResponse.message || 'Registration failed. Please try again.');
-    }
+  const handleToggle = () => {
+    setIsFarmer((prev) => !prev);
   };
 
   return (
-    <div className="register-page">
-      <div className="register-image">
-        <img src={yourImage} alt="Register" />
-      </div>
-      <div className="register">
-        <h1>Register</h1>
-        <form onSubmit={handleSubmit}>
-          {error && <p className="error">{error}</p>}
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="flex w-4/5 max-w-3xl shadow-lg bg-white rounded-lg overflow-hidden">
+        {/* Left side with image */}
+        <div className="hidden md:block md:w-1/2 bg-cover bg-center" style={{ backgroundImage: "url('https://media.istockphoto.com/id/1498866441/vector/farm-animals.jpg?s=612x612&w=0&k=20&c=awYgtvPHCsHXbOW7OHAwJ6qq3vdibp_5tcTbkS-Y1fc=')" }}></div>
+        
+        {/* Right side with form */}
+        <div className="w-full md:w-1/2 p-8">
+          <button className="text-gray-600 text-sm mb-4">Back</button>
+          <h2 className="text-3xl font-bold text-gray-800 mb-2">Create an account</h2>
+          <p className="text-gray-500 mb-6">Already have an account? <a href="#" className="text-green-600 hover:underline">Log in</a></p>
+          
+          {/* Toggle for Farmer/Buyer */}
+          <div className="flex items-center mb-6">
+            <button
+              className={`w-1/2 py-2 text-center font-semibold ${isFarmer ? 'bg-green-700 text-white' : 'bg-gray-300 text-gray-700'}`}
+              onClick={() => setIsFarmer(true)}
+            >
+              Farmer
+            </button>
+            <button
+              className={`w-1/2 py-2 text-center font-semibold ${!isFarmer ? 'bg-green-700 text-white' : 'bg-gray-300 text-gray-700'}`}
+              onClick={() => setIsFarmer(false)}
+            >
+              Buyer
+            </button>
+          </div>
 
-          <div className="role-selection">
-            <label className="role-label">Role:</label>
-            <div className="role-options">
-              <label>
-                <input
-                  type="radio"
-                  name="role"
-                  value="farmer"
-                  checked={formData.role === 'farmer'}
-                  onChange={handleChange}
-                />
-                Farmer
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="role"
-                  value="buyer"
-                  checked={formData.role === 'buyer'}
-                  onChange={handleChange}
-                />
-                Buyer
-              </label>
+          {/* Registration Form */}
+          <form className="space-y-4">
+            <div className="flex space-x-4">
+              <input
+                type="text"
+                placeholder="First Name"
+                className="w-1/2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+              />
+              <input
+                type="text"
+                placeholder="Last Name"
+                className="w-1/2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+              />
             </div>
-          </div>
-
-          <div>
-            <label>Name:</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label>Email:</label>
             <input
               type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
+              placeholder="Email"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
             />
-          </div>
-          <div>
-            <label>Password:</label>
             <input
               type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
+              placeholder="Enter Your Password"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
             />
-          </div>
-          <button type="submit" disabled={loading}>
-            {loading ? 'Registering...' : 'Register'}
-          </button>
-        </form>
+            <button
+              type="submit"
+              className="w-full py-3 mt-4 bg-green-700 text-white font-bold rounded-lg hover:bg-green-800 transition duration-300"
+            >
+              Create Account
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
-}
+};
 
-export default Register;
+export default RegisterPage;
