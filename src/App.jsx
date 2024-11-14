@@ -6,6 +6,7 @@ import CartPage from './pages/CartPage';
 import Contact from './components/Contact';
 import Register from './components/Register';
 import Login from './components/Login';
+import Footer from './components/Footer'
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -90,6 +91,9 @@ const App = () => {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </div>
+        <footer>
+          <Footer/>
+        </footer>
 
         
       </div>
