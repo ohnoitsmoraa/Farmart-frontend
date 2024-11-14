@@ -1,42 +1,37 @@
-/* Basic reset for margin and padding */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
   
-  /* Body styling */
   body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f7f6; /* Light neutral background */
+    background-color: #f4f7f6; 
     color: #333;
   }
   
-  /* Register page container */
   .register-page {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    padding: 20px;
+    height: 80vh;
+    padding: 40px;
   }
   
-  /* Image section */
   .register-image {
-    flex: 1;
-    padding-right: 20px;
+    flex: 1.5;
+    padding-right: 45px;
     text-align: center;
   }
   
   .register-image img {
     width: 100%;
-    max-width: 400px; /* You can adjust this to fit your needs */
+    max-width: 400px; 
     height: auto;
     border-radius: 8px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   }
   
-  /* Form container */
   .register {
     flex: 1;
     max-width: 450px;
@@ -47,21 +42,18 @@
     margin-top: 20px;
   }
   
-  /* Header */
   h1 {
     text-align: center;
     margin-bottom: 25px;
-    font-size: 2.5rem;  /* Larger header */
-    font-weight: bold;  /* Bold header */
-    color: #28a745; /* Primary green color */
+    font-size: 2.5rem; 
+    font-weight: bold;  
+    color: #28a745; 
   }
   
-  /* Form container */
   form div {
     margin-bottom: 20px;
   }
   
-  /* Role selection styling */
   .role-selection {
     display: flex;
     flex-direction: row;
@@ -71,20 +63,20 @@
   
   .role-label {
     font-weight: bold;
-    font-size: 1.3rem;  /* Larger role label */
+    font-size: 1.3rem; 
     color: #333;
     margin-right: 10px;
   }
   
   .role-options {
     display: flex;
-    gap: 15px; /* Space between the options */
+    gap: 15px; 
   }
   
   .role-options label {
     display: inline-flex;
     align-items: center;
-    font-size: 1.2rem; /* Larger role options */
+    font-size: 1.2rem; 
     color: #333;
   }
   
@@ -92,52 +84,48 @@
     margin-right: 5px;
   }
   
-  /* Label styling */
   label {
     display: block;
-    margin-bottom: 12px; /* Increased margin */
-    font-weight: bold;   /* Make labels bolder */
-    color: #333;         /* Darker color for contrast */
-    font-size: 1.1rem;   /* Larger font size for labels */
+    margin-bottom: 12px; 
+    font-weight: bold;  
+    color: #333;       
+    font-size: 1.1rem;   
   }
   
-  /* Input and select styling */
   input, select {
     width: 100%;
-    padding: 14px;  /* Larger padding for inputs */
-    font-size: 1.2rem;  /* Larger font size */
+    padding: 14px;  
+    font-size: 1.2rem; 
     border: 1px solid #ddd;
     border-radius: 8px;
     transition: all 0.3s ease;
   }
   
   input:focus, select:focus {
-    border-color: #28a745; /* Green border on focus */
+    border-color: #28a745; 
     outline: none;
   }
   
-  /* Error message styling */
   p.error {
-    color: #d9534f; /* Red for errors */
-    font-size: 1rem; /* Larger error message font size */
+    color: #d9534f;
+    font-size: 1rem; 
     margin-bottom: 15px;
   }
   
-  /* Button styling */
   button {
     width: 100%;
-    padding: 15px;  /* Larger button padding */
-    background-color: #28a745; /* Primary green color */
+    padding: 15px;  
+    background-color: #28a745; 
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 1.3rem;  /* Larger button text */
+    font-size: 1.3rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
   
   button:hover {
-    background-color: #218838; /* Darker green on hover */
+    background-color: #218838; 
   }
   
   button:disabled {
@@ -145,16 +133,14 @@
     cursor: not-allowed;
   }
   
-  /* Contact Text Styling */
   .contact-text {
-    font-weight: bold;  /* Make the text bold */
-    font-size: 1.5rem;  /* Adjust the font size if needed */
-    color: #333;        /* Dark color for contrast */
-    text-align: center; /* Optional: center the text */
-    margin-top: 20px;   /* Add margin to space it out from other content */
+    font-weight: bold;  
+    font-size: 1.5rem;  
+    color: #333;        
+    text-align: center; 
+    margin-top: 20px; 
   }
   
-  /* Responsive design */
   @media (max-width: 768px) {
     .register-page {
       flex-direction: column;
@@ -171,21 +157,21 @@
     }
   
     h1 {
-      font-size: 2rem;  /* Adjust heading size on smaller screens */
+      font-size: 2rem; 
     }
   
     label {
-      font-size: 1.1rem;  /* Larger labels */
+      font-size: 1.1rem;
     }
   
     input, select {
-      font-size: 1.1rem;  /* Larger input fields */
-      padding: 12px;      /* Larger padding */
+      font-size: 1.1rem;
+      padding: 12px;    
     }
   
     button {
-      font-size: 1.1rem;  /* Larger buttons */
-      padding: 14px;      /* Larger button padding */
+      font-size: 1.1rem; 
+      padding: 14px;     
     }
   }
   

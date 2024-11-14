@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Login.css';
-import yourImage from '../assets/Login.jpg'; // Import the image
+import yourImage from '../assets/Login.jpg'; 
 
 function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -13,7 +13,7 @@ function Login() {
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
-    setRole(urlParams.get('role') || ''); // Default to empty if no role is passed
+    setRole(urlParams.get('role') || ''); 
   }, [location.search]);
 
   const handleChange = (e) => {
@@ -33,13 +33,12 @@ function Login() {
     setLoading(true);
     setError('');
 
-    // Mock response simulation
     const mockResponse = { success: true, message: 'Login successful!' };
 
     setLoading(false);
 
     if (mockResponse.success) {
-      navigate(`/${role}-dashboard`); // Redirect based on selected role
+      navigate(`/${role}-dashboard`); 
     } else {
       setError(mockResponse.message || 'Login failed. Please check your credentials.');
     }
@@ -48,13 +47,11 @@ function Login() {
   return (
     <div className="login-container">
       <div className="image-container">
-        {/* Display the image here */}
         <img src={yourImage} alt="Login" className="login-image" />
       </div>
       <div className="form-container">
         <h1>{role ? `${role.charAt(0).toUpperCase() + role.slice(1)} Login` : 'Login'}</h1>
 
-        {/* Role selection buttons */}
         {!role && (
           <div className="role-selection">
             <button type="button" className="farmer-button" onClick={() => handleRoleSelect('farmer')}>
@@ -63,6 +60,13 @@ function Login() {
             <button type="button" className="buyer-button" onClick={() => handleRoleSelect('buyer')}>
               Buyer
             </button>
+          </div>
+        )}
+
+        {/* Show "Welcome Back!" message if role is set (assuming it's a returning user) */}
+        {role && (
+          <div className="welcome-back-message">
+            <h2>Welcome Back!</h2>
           </div>
         )}
 
