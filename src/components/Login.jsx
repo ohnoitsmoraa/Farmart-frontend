@@ -1,104 +1,68 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import './Login.css';
-import yourImage from '../assets/Login.jpg'; 
+import React, { useState } from 'react';
 
-function Login() {
-  const [formData, setFormData] = useState({ email: '', password: '' });
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [role, setRole] = useState('');
-  const navigate = useNavigate();
-  const location = useLocation();
+const Login = () => {
+  const [isFarmer, setIsFarmer] = useState(true);
 
-  useEffect(() => {
-    const urlParams = new URLSearchParams(location.search);
-    setRole(urlParams.get('role') || ''); 
-  }, [location.search]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleRoleSelect = (selectedRole) => {
-    setRole(selectedRole);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-
-    const mockResponse = { success: true, message: 'Login successful!' };
-
-    setLoading(false);
-
-    if (mockResponse.success) {
-      navigate(`/${role}-dashboard`); 
-    } else {
-      setError(mockResponse.message || 'Login failed. Please check your credentials.');
-    }
+  const handleToggle = () => {
+    setIsFarmer((prev) => !prev);
   };
 
   return (
-    <div className="login-container">
-      <div className="image-container">
-        <img src={yourImage} alt="Login" className="login-image" />
-      </div>
-      <div className="form-container">
-        <h1>{role ? `${role.charAt(0).toUpperCase() + role.slice(1)} Login` : 'Login'}</h1>
-
-        {!role && (
-          <div className="role-selection">
-            <button type="button" className="farmer-button" onClick={() => handleRoleSelect('farmer')}>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="flex w-4/5 max-w-3xl shadow-lg bg-white rounded-lg overflow-hidden">
+        {/* Left side with image */}
+        <div className="hidden md:block md:w-1/2 bg-cover bg-center" style={{ backgroundImage: "url('https://media.istockphoto.com/id/1498866441/vector/farm-animals.jpg?s=612x612&w=0&k=20&c=awYgtvPHCsHXbOW7OHAwJ6qq3vdibp_5tcTbkS-Y1fc=')" }}></div>
+        
+        {/* Right side with form */}
+        <div className="w-full md:w-1/2 p-8">
+          <button className="text-gray-600 text-sm mb-4">Back</button>
+          <h2 className="text-3xl font-bold text-gray-800 mb-2">Login to your account</h2>
+          <p className="text-gray-500 mb-6">Don't have an account? <a href="#" className="text-green-600 hover:underline">Sign up</a></p>
+          
+          {/* Toggle for Farmer/Buyer */}
+          <div className="flex items-center mb-6">
+            <button
+              className={`w-1/2 py-2 text-center font-semibold ${isFarmer ? 'bg-green-700 text-white' : 'bg-gray-300 text-gray-700'}`}
+              onClick={() => setIsFarmer(true)}
+            >
               Farmer
             </button>
-            <button type="button" className="buyer-button" onClick={() => handleRoleSelect('buyer')}>
+            <button
+              className={`w-1/2 py-2 text-center font-semibold ${!isFarmer ? 'bg-green-700 text-white' : 'bg-gray-300 text-gray-700'}`}
+              onClick={() => setIsFarmer(false)}
+            >
               Buyer
             </button>
           </div>
-        )}
 
-        {/* Show "Welcome Back!" message if role is set (assuming it's a returning user) */}
-        {role && (
-          <div className="welcome-back-message">
-            <h2>Welcome Back!</h2>
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit}>
-          {error && <p>{error}</p>}
-          <div>
-            <label>Email:</label>
+          {/* Login Form */}
+          <form className="space-y-4">
             <input
               type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
+              placeholder="Email"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
             />
-          </div>
-          <div>
-            <label>Password:</label>
             <input
               type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
+              placeholder="Enter Your Password"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
             />
+            <button
+              type="submit"
+              className="w-full py-3 mt-4 bg-green-700 text-white font-bold rounded-lg hover:bg-green-800 transition duration-300"
+            >
+              Login
+            </button>
+          </form>
+
+          {/* Forgot Password Link */}
+          <div className="text-center mt-4">
+            <a href="#" className="text-green-600 hover:underline">Forgot Password?</a>
           </div>
-          <button type="submit" disabled={loading}>
-            {loading ? 'Logging in...' : 'Login'}
-          </button>
-        </form>
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default Login;
