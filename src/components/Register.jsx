@@ -38,7 +38,7 @@ const RegisterPage = () => {
       .then((data) => {
         localStorage.setItem("user", JSON.stringify(data)); // Store user info in local storage
         if (role === "Farmer") {
-          navigate("/farmer-dashboard"); // Redirect farmers to the Farmer Dashboard
+          navigate("/sell-animal"); // Redirect farmers to the sell animal
         } else {
           navigate("/"); // Redirect buyers to the Animals page
         }

@@ -6,6 +6,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
+import SellAnimal from './components/SellAnimal';
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -101,6 +102,7 @@ const AppContent = ({ cartItems, addToCart, updateQuantity, removeFromCart }) =>
           />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/sell-animal" element={<SellAnimal />} />
         </Routes>
       </div>
 
