@@ -76,7 +76,7 @@ const AppContent = ({ cartItems, addToCart, updateQuantity, removeFromCart }) =>
             </li>
             <li>
               <Link to="/cart" className="hover:text-gray-300 transition duration-200">
-                Cart ({cartItems.length})
+                Cart 
               </Link>
             </li>
           </ul>
