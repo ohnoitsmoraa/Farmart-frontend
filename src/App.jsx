@@ -7,10 +7,13 @@ import Login from './components/Login';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
 import SellAnimal from './components/SellAnimal';
+import FarmerDashboard from './components/FarmerDashboard';
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
+  const [userRole, setUserRole] = useState(null); // State to track the user role ('farmer' or 'buyer')
 
+  // Add to cart functionality
   const addToCart = (animal) => {
     setCartItems((prevItems) => {
       const itemInCart = prevItems.find((item) => item.id === animal.id);
@@ -25,10 +28,12 @@ const App = () => {
     });
   };
 
+  // Remove from cart functionality
   const removeFromCart = (id) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
+  // Update cart item quantity
   const updateQuantity = (id, quantity) => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
@@ -39,17 +44,26 @@ const App = () => {
 
   return (
     <Router>
-      <AppContent 
-        cartItems={cartItems} 
-        addToCart={addToCart} 
-        updateQuantity={updateQuantity} 
-        removeFromCart={removeFromCart} 
+      <AppContent
+        cartItems={cartItems}
+        addToCart={addToCart}
+        updateQuantity={updateQuantity}
+        removeFromCart={removeFromCart}
+        userRole={userRole}
+        setUserRole={setUserRole}
       />
     </Router>
   );
 };
 
-const AppContent = ({ cartItems, addToCart, updateQuantity, removeFromCart }) => {
+const AppContent = ({
+  cartItems,
+  addToCart,
+  updateQuantity,
+  removeFromCart,
+  userRole,
+  setUserRole,
+}) => {
   const location = useLocation();
 
   return (
@@ -74,9 +88,22 @@ const AppContent = ({ cartItems, addToCart, updateQuantity, removeFromCart }) =>
                 Login
               </Link>
             </li>
+            {userRole === 'farmer' && (
+              <li>
+                <Link to="/farmer-dashboard" className="hover:text-gray-300 transition duration-200">
+                  Farmer Dashboard
+                </Link>
+              </li>
+            )}
             <li>
-              <Link to="/cart" className="hover:text-gray-300 transition duration-200">
-                Cart 
+              <Link to="/cart" className="relative hover:text-gray-300 transition duration-200">
+                Cart
+                {/* Show item count on the cart link */}
+                {cartItems.length > 0 && (
+                  <span className="absolute -top-2 -right-3 bg-red-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                    {cartItems.length}
+                  </span>
+                )}
               </Link>
             </li>
           </ul>
@@ -100,15 +127,17 @@ const AppContent = ({ cartItems, addToCart, updateQuantity, removeFromCart }) =>
               />
             }
           />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register setUserRole={setUserRole} />} />
+          <Route path="/login" element={<Login setUserRole={setUserRole} />} />
           <Route path="/sell-animal" element={<SellAnimal />} />
+          <Route path="/farmer-dashboard" element={<FarmerDashboard />} />
         </Routes>
       </div>
 
-      {/* Render Contact and Footer only on the homepage */}
+      {/* Show Contact and Footer only on the Home page */}
       {location.pathname === '/' && (
         <>
+       
           <Contact />
           <Footer />
         </>
