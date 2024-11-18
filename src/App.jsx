@@ -5,13 +5,16 @@ import CartPage from './pages/CartPage';
 import Register from './components/Register';
 import Login from './components/Login';
 import Footer from './components/Footer';
-import Contact from './components/Contact';
 import SellAnimal from './components/SellAnimal';
 import FarmerDashboard from './components/FarmerDashboard';
+import HeroSlider from './components/HeroSlider';
+import AboutUs from './components/Aboutus'; // Import AboutUs component
+import Testimonials from './components/Testimonials'; // Import Testimonials component
+import Contact from './components/Contact'; // Import Contact component
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
-  const [userRole, setUserRole] = useState(null); // State to track the user role ('farmer' or 'buyer')
+  const [userRole, setUserRole] = useState(null); // Track the user role ('farmer' or 'buyer')
 
   // Add to cart functionality
   const addToCart = (animal) => {
@@ -113,34 +116,38 @@ const AppContent = ({
       {/* Main Content */}
       <div className="flex-grow">
         <Routes>
-          <Route
-            path="/"
-            element={<ProductPage addToCart={addToCart} cartItems={cartItems} />}
-          />
-          <Route
-            path="/cart"
-            element={
-              <CartPage
-                cartItems={cartItems}
-                updateQuantity={updateQuantity}
-                removeFromCart={removeFromCart}
-              />
-            }
-          />
+          <Route path="/" element={
+            <div>
+              {/* HeroSlider Section */}
+              <HeroSlider />
+
+              {/* About Us Section */}
+              <AboutUs />
+
+              {/* Testimonials Section */}
+              <Testimonials />
+            </div>
+          } />
+          <Route path="/cart" element={<CartPage cartItems={cartItems} updateQuantity={updateQuantity} removeFromCart={removeFromCart} />} />
           <Route path="/register" element={<Register setUserRole={setUserRole} />} />
           <Route path="/login" element={<Login setUserRole={setUserRole} />} />
           <Route path="/sell-animal" element={<SellAnimal />} />
           <Route path="/farmer-dashboard" element={<FarmerDashboard />} />
+          <Route path="/productpage" element={<ProductPage addToCart={addToCart} cartItems={cartItems} />} />
+          <Route path="/contact" element={<Contact />} /> {/* Contact page route */}
         </Routes>
       </div>
 
-      {/* Show Contact and Footer only on the Home page */}
+      {/* Footer Section */}
       {location.pathname === '/' && (
-        <>
-       
-          <Contact />
-          <Footer />
-        </>
+        <footer className="bg-green-900 text-white py-6 text-center">
+          <div className="container mx-auto">
+            <p className="text-lg mb-4">Join our mission to support sustainable farming and empower local farmers.</p>
+            <Link to="/contact" className="bg-white text-green-900 py-2 px-6 rounded-lg hover:bg-gray-200 transition duration-300">
+              Contact Us
+            </Link>
+          </div>
+        </footer>
       )}
     </div>
   );
