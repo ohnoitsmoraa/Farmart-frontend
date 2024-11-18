@@ -1,29 +1,92 @@
-.h3{
-    color: black;
-    text-decoration: underline;
-    text-align: center;
-}
-
-#subscribe_button{
-    background-color: black;
-    color: white;
-    border: none;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 8px;
-    display: inline-block;
-}
-
-#mini_nav{
+footer {
+    background-color: #064e3b; /* Dark green */
+    color: #ffffff; /* White text */
+    padding: 2rem 1rem;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-#mini_nav h3{
-    margin: 0;
-}
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  footer h4 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #f0fdf4; /* Light green for headings */
+  }
+  
+  footer p {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #d1fae5; /* Soft green */
+  }
+  
+  footer a {
+    color: #ffffff; /* Default white for links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  footer a:hover {
+    color: #a7f3d0; /* Lighter green on hover */
+  }
+  
+  footer form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  footer input[type="email"] {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: #f9fafb; /* Light gray background */
+    color: #064e3b; /* Text color to match theme */
+  }
+  
+  footer input[type="email"]::placeholder {
+    color: #9ca3af; /* Placeholder text color */
+  }
+  
+  footer button {
+    padding: 0.5rem 1rem;
+    background-color: #ffffff; /* White button */
+    color: #064e3b; /* Dark green text */
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  footer button:hover {
+    background-color: #d1fae5; /* Soft green on hover */
+  }
+  
+  footer .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+  
+  footer .border-t {
+    border-top: 1px solid #2c7a7b; /* Lighter border for separation */
+  }
+  
+  footer .pt-4 {
+    padding-top: 1rem;
+  }
+  
+  footer .text-center {
+    text-align: center;
+  }
+  
+  footer .mt-8 {
+    margin-top: 2rem;
+  }
+  
