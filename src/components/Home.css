@@ -1,0 +1,110 @@
+/* General Styles */
+.homepage {
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #004d00; /* Dark Green */
+    padding: 10px 20px;
+    color: white;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .nav-button {
+    background-color: #006600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  
+  .nav-button:hover {
+    background-color: #003300;
+  }
+  
+  .search-cart {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .search-bar {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    width: 200px;
+  }
+  
+  .cart-button {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+  }
+  
+  /* Hero Slider Styles */
+  .hero-slider {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    margin-top: 10px;
+  }
+  
+  .slide {
+    min-width: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+  
+  /* Section Styles */
+  .about-section, .testimonials-section, .start-shopping {
+    margin: 20px auto;
+    text-align: center;
+    max-width: 1200px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    color: #004d00;
+    margin-bottom: 15px;
+  }
+  
+  .start-shopping .shopping-button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background-color: #006600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .start-shopping .shopping-button:hover {
+    background-color: #003300;
+  }
+  
