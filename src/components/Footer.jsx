@@ -1,36 +1,71 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Footer.css';
 
-function footer() {
+const Footer = () => {
   return (
-    <div id="#footer">
-        <footer className="bg-green-600 text-white rounded-t-md py-9">
-				<div
-					className=" mx-auto  grid 
-            gap-8 w-11/12 items-center "
-				>
-					<div className="items-center text-center mt-2">
-						<h1 className=" text-2xl text-white font-bold">
-							Get the freshest FarmArt updates
-						</h1>
-					</div>
-					<div className=" items-center justify-center flex flex-col gap-2 ">
-						<h3 className='h3'>Enter email here </h3>
-					</div>
-                    <div id='subscribe_button'>
-                        <button type='submit'>Subscribe</button>
-                    </div>
-					<div id='mini_nav'>
-						<h3>Home</h3>
-						<h3>About</h3>
-						<h3>Contact</h3>
-					</div>
-					<div className="bottom_nav">
-						<p>© 2024 FarmArt. All Rights Reserved.</p>
-					</div>
-				</div>
-			</footer>
-    </div>
-  )
-}
+    <footer className="bg-green-900 text-white py-8">
+      <div className="container mx-auto px-4">
+        {/* Footer Top Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* About Us */}
+          <div>
+            <h4 className="text-lg font-bold mb-4">About Us</h4>
+            <p className="text-sm">
+              At FarmArt, we aim to connect farmers and buyers directly for a transparent and fair marketplace. Join us in supporting sustainable farming.
+            </p>
+          </div>
 
-export default footer
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-lg font-bold mb-4">Quick Links</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/" className="hover:text-gray-300 transition duration-200">Home</Link>
+              </li>
+              <li>
+                <Link to="/productpage" className="hover:text-gray-300 transition duration-200">Shop</Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-gray-300 transition duration-200">Contact</Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Newsletter Subscription */}
+          <div>
+            <h4 className="text-lg font-bold mb-4">Subscribe to Our Newsletter</h4>
+            <p className="text-sm mb-4">
+              Stay updated on the latest products, deals, and updates from FarmArt.
+            </p>
+            <form>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full px-3 py-2 rounded bg-gray-100 text-gray-900 mb-2"
+              />
+              <button
+                type="submit"
+                className="bg-white text-green-900 py-2 px-4 rounded hover:bg-gray-200 transition duration-300"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {/* Footer Bottom Section */}
+        <div className="mt-8 border-t border-gray-700 pt-4 text-center">
+          <p className="text-sm">
+            © {new Date().getFullYear()} FarmArt. All Rights Reserved.
+          </p>
+          <p className="text-sm">
+            Designed and built with ❤️ by the FarmArt team.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
