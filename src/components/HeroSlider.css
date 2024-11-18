@@ -1,0 +1,19 @@
+.hero-slider {
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+    border-radius: 8px;
+  }
+  
+  .slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
