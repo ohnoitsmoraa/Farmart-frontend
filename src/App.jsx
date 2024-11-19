@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import ProductPage from './pages/ProductPage';
 import CartPage from './pages/CartPage';
 import Register from './components/Register';
@@ -8,9 +8,10 @@ import Footer from './components/Footer';
 import SellAnimal from './components/SellAnimal';
 import FarmerDashboard from './components/FarmerDashboard';
 import HeroSlider from './components/HeroSlider';
-import AboutUs from './components/Aboutus'; // Import AboutUs component
-import Testimonials from './components/Testimonials'; // Import Testimonials component
-import Contact from './components/Contact'; // Import Contact component
+import AboutUs from './components/Aboutus';
+import Testimonials from './components/Testimonials';
+import Contact from './components/Contact';
+import StatsAndProducts from './components/StatsAndProducts';
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -67,12 +68,10 @@ const AppContent = ({
   userRole,
   setUserRole,
 }) => {
-  const location = useLocation();
-
   return (
     <div className="flex flex-col min-h-screen">
       {/* Navigation Bar */}
-      <nav className="sticky top-0 z-10 bg-green-900 text-white shadow-md">
+      <nav className="sticky top-0 z-10 bg-green-900 shadow-md text-yellow-500 font-bold">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <h1 className="text-lg font-bold">FarmArt</h1>
           <ul className="flex space-x-6">
@@ -116,39 +115,71 @@ const AppContent = ({
       {/* Main Content */}
       <div className="flex-grow">
         <Routes>
-          <Route path="/" element={
-            <div>
-              {/* HeroSlider Section */}
-              <HeroSlider />
+          {/* Homepage Route */}
+          <Route
+            path="/"
+            element={
+              <div>
+                {/* HeroSlider Section */}
+                <HeroSlider />
 
-              {/* About Us Section */}
-              <AboutUs />
+               
 
-              {/* Testimonials Section */}
-              <Testimonials />
-            </div>
-          } />
-          <Route path="/cart" element={<CartPage cartItems={cartItems} updateQuantity={updateQuantity} removeFromCart={removeFromCart} />} />
+                {/* ProductPage Section */}
+                <section className="py-10">
+                  <div className="container mx-auto">
+                    <h2 className="text-2xl font-bold mb-6">Our Products</h2>
+                    <ProductPage addToCart={addToCart} cartItems={cartItems} />
+                  </div>
+                </section>
+
+                 {/* About Us Section */}
+                 <section className="bg-gray-100 py-10">
+                  <div className="container mx-auto">
+                    <AboutUs />
+                  </div>
+                </section>
+
+                <StatsAndProducts />
+
+                {/* Testimonials Section */}
+                <section className="bg-gray-100 py-10">
+                  <div className="container mx-auto">
+                    <Testimonials />
+                  </div>
+                </section>
+
+                {/* Contact Section */}
+                <section className="py-10">
+                  <div className="container mx-auto">
+                    <Contact />
+                  </div>
+                </section>
+                 {/* Footer Section */}
+      <Footer />
+
+              </div>
+            }
+          />
+          {/* Other Routes */}
+          <Route
+            path="/cart"
+            element={
+              <CartPage
+                cartItems={cartItems}
+                updateQuantity={updateQuantity}
+                removeFromCart={removeFromCart}
+              />
+            }
+          />
           <Route path="/register" element={<Register setUserRole={setUserRole} />} />
           <Route path="/login" element={<Login setUserRole={setUserRole} />} />
           <Route path="/sell-animal" element={<SellAnimal />} />
           <Route path="/farmer-dashboard" element={<FarmerDashboard />} />
-          <Route path="/productpage" element={<ProductPage addToCart={addToCart} cartItems={cartItems} />} />
-          <Route path="/contact" element={<Contact />} /> {/* Contact page route */}
         </Routes>
       </div>
 
-      {/* Footer Section */}
-      {location.pathname === '/' && (
-        <footer className="bg-green-900 text-white py-6 text-center">
-          <div className="container mx-auto">
-            <p className="text-lg mb-4">Join our mission to support sustainable farming and empower local farmers.</p>
-            <Link to="/contact" className="bg-white text-green-900 py-2 px-6 rounded-lg hover:bg-gray-200 transition duration-300">
-              Contact Us
-            </Link>
-          </div>
-        </footer>
-      )}
+     
     </div>
   );
 };
