@@ -1,9 +1,10 @@
 import React from 'react';
+import { FaTrashAlt } from "react-icons/fa";
 
 const CartPage = ({ cartItems, updateQuantity, removeFromCart }) => {
   const subtotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-  const transportationFee = 3.99;
-  const tax = 2.00;
+  const transportationFee = 200.99;
+  const tax = 100.00;
   const total = subtotal + transportationFee + tax;
 
   return (
@@ -51,7 +52,7 @@ const CartPage = ({ cartItems, updateQuantity, removeFromCart }) => {
                   onClick={() => removeFromCart(item.id)}
                   className="text-red-500 hover:text-red-700 font-semibold"
                 >
-                  Delete
+                     <FaTrashAlt size={20} />
                 </button>
               </div>
             ))}
@@ -72,7 +73,7 @@ const CartPage = ({ cartItems, updateQuantity, removeFromCart }) => {
             <p className="flex justify-between font-bold text-green-800 mt-4">
               <span>Total:</span> <span>KES {total.toFixed(2)}</span>
             </p>
-            <button className="w-full bg-green-500 text-white py-2 rounded-md mt-4 hover:bg-green-600">
+            <button className="w-full bg-green-900 text-white py-2 rounded-md mt-4 hover:bg-green-600">
               Check out
             </button>
           </div>

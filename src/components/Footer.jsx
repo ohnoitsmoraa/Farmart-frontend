@@ -25,7 +25,7 @@ const Footer = () => {
 
       
         <nav className="mt-6 flex justify-center space-x-8">
-          <Link to="/" className="text-gray-300 hover:text-white hover:underline">
+          <Link to="/home" className="text-gray-300 hover:text-white hover:underline">
             Home
           </Link>
           <Link to="/aboutus" className="text-gray-300 hover:text-white hover:underline">
