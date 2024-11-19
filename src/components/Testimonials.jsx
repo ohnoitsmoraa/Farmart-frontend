@@ -1,29 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import "./Testimonials.css";
+
+const testimonialsData = [
+  {
+    name: "Jane Doe",
+    role: "Farmer",
+    text: "FarmArt has transformed the way I sell my animals. The platform is so user-friendly and efficient!",
+  },
+  {
+    name: "John Smith",
+    role: "Buyer",
+    text: "Purchasing animals directly from farmers has never been easier. I love this platform!",
+  },
+  {
+    name: "Mary Johnson",
+    role: "Farmer",
+    text: "FarmArt helped me connect with trustworthy buyers. Highly recommend it to other farmers!",
+  },
+];
 
 const Testimonials = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonialsData.length);
+    }, 8000); // Keep the testimonial for 8 seconds before transitioning
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="bg-white py-16">
-      <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl font-semibold text-green-900 mb-4">Testimonials</h2>
-        <div className="flex justify-center space-x-8">
-          <div className="bg-gray-200 p-6 rounded-lg shadow-md max-w-xs">
-            <p className="text-lg text-gray-700 mb-4">
-              "FarmArt helped me find the perfect animals for my farm. The process was so simple and
-              efficient!"
-            </p>
-            <p className="font-semibold text-green-900">John D.</p>
-            <p className="text-gray-500">Farmer</p>
+    <div className="testimonials-container">
+      <div
+        className="testimonials-track"
+        style={{
+          transform: `translateX(-${currentIndex * 100}%)`,
+        }}
+      >
+        {testimonialsData.map((testimonial, index) => (
+          <div className="testimonial" key={index}>
+            <p className="testimonial-text">"{testimonial.text}"</p>
+            <p className="testimonial-name">{testimonial.name}</p>
+            <p className="testimonial-role">{testimonial.role}</p>
           </div>
-          <div className="bg-gray-200 p-6 rounded-lg shadow-md max-w-xs">
-            <p className="text-lg text-gray-700 mb-4">
-              "I bought a cow through FarmArt, and it arrived in great condition. Highly recommended!"
-            </p>
-            <p className="font-semibold text-green-900">Sarah P.</p>
-            <p className="text-gray-500">Buyer</p>
-          </div>
-        </div>
+        ))}
       </div>
-    </section>
+    </div>
   );
 };
 
