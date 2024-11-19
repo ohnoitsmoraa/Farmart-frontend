@@ -1,3 +1,4 @@
+
 import React from "react";
 import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -87,5 +88,6 @@ const Footer = () => {
     </div>
   );
 };
+
 
 export default Footer;

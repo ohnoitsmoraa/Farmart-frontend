@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules"; // Fixed import
@@ -92,8 +93,9 @@ const Testimonials = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+
       </div>
-    </section>
+    </div>
   );
 };
 
