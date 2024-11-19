@@ -74,7 +74,7 @@ const CartPage = ({ cartItems, updateQuantity, removeFromCart }) => {
               <span>Total:</span> <span>KES {total.toFixed(2)}</span>
             </p>
             <button className="w-full bg-green-900 text-white py-2 rounded-md mt-4 hover:bg-green-600">
-              Check out
+              Check Out
             </button>
           </div>
         </div>
