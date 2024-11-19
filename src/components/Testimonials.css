@@ -1,0 +1,41 @@
+.testimonials-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  background-color: #f0fdf4; /* Light green background */
+  border: 2px solid #047857; /* Dark green border */
+  border-radius: 8px; /* Rounded corners for a modern look */
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.testimonials-track {
+  display: flex;
+  transition: transform 1s ease-in-out; /* Smooth transition */
+}
+
+.testimonial {
+  flex: 0 0 100%; /* Each testimonial takes up 100% of the container */
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #047857; /* Dark green text to align with the theme */
+}
+
+.testimonial-text {
+  font-size: 1.2rem;
+  color: #064e3b; /* Slightly darker green for better readability */
+  font-style: italic;
+}
+
+.testimonial-name {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #047857; /* Match the text color to the theme */
+}
+
+.testimonial-role {
+  font-size: 0.9rem;
+  color: #065f46; /* Medium green for secondary text */
+}
