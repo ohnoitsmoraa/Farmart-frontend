@@ -15,7 +15,7 @@ const StatsAndProducts = () => {
     {
       name: "Dairy Cow",
       description:
-        "A high-yielding dairy cow known for producing up to 25 liters of milk daily.",
+        "A high-yielding dairy cow known for producing up to 25 liters of milk.",
     },
     {
       name: "Goat",
@@ -80,7 +80,7 @@ const StatsAndProducts = () => {
         {products.map((product, index) => (
           <div
             key={index}
-            className="bg-green-700 text-white shadow-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 flex flex-col items-center justify-center p-6 rounded-s-full h-64"
+            className="bg-green-700 text-white shadow-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 flex flex-col items-center justify-center p-6 rounded-tl-full rounded-br-full h-64"
           >
             {/* Text Section */}
             <div className="text-center px-4">
