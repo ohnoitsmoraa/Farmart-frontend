@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const HeroSlider = () => {
   return (
-    <div className="relative h-screen flex items-center">
+    <div className="relative h-screen flex items-center ">
       {/* Background Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover"

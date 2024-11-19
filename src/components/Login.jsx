@@ -23,7 +23,7 @@ const LoginPage = () => {
 
     const role = isFarmer ? "Farmer" : "Buyer";
 
-    fetch("http://localhost:5000/login", {
+    fetch("https://farmart-backend-2-okz3.onrender.com/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...credentials, role }),
