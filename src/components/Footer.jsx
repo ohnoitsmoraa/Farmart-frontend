@@ -26,16 +26,16 @@ const Footer = () => {
 
       
         <nav className="mt-6 flex justify-center space-x-8">
-          <Link to="/home" className="text-gray-300 hover:text-white hover:underline">
+          <Link to="/" className="text-gray-300 hover:text-white hover:underline">
             Home
           </Link>
-          <Link to="/aboutus" className="text-gray-300 hover:text-white hover:underline">
+          <Link to="/about" className="text-gray-300 hover:text-white hover:underline">
             About
           </Link>
-          <Link to="/contactus" className="text-gray-300 hover:text-white hover:underline">
+          <Link to="/contact" className="text-gray-300 hover:text-white hover:underline">
             Contact
           </Link>
-          <Link to="/cartpage" className="text-gray-300 hover:text-white hover:underline">
+          <Link to="/cart" className="text-gray-300 hover:text-white hover:underline">
             Cart
           </Link>
         </nav>
@@ -67,7 +67,7 @@ const Footer = () => {
             <FaTwitter size={28} />
           </a>
           <a
-            href="https://www.whatsapp.com"
+            href="https://web.whatsapp.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-300 hover:text-green-500"

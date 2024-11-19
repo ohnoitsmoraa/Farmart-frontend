@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar'; // Import the Navbar component
+import Navbar from './components/Navbar'; 
 import ProductPage from './pages/ProductPage';
 import CartPage from './pages/CartPage';
 import Register from './components/Register';
@@ -49,95 +49,113 @@ const App = () => {
 
   return (
     <Router>
-      <AppContent
-        cartItems={cartItems}
-        addToCart={addToCart}
-        updateQuantity={updateQuantity}
-        removeFromCart={removeFromCart}
-        userRole={userRole}
-        setUserRole={setUserRole}
-      />
-    </Router>
-  );
-};
+      <div className="flex flex-col min-h-screen">
+        {/* Navbar */}
+        <Navbar cartItems={cartItems} userRole={userRole} />
 
-const AppContent = ({
-  cartItems,
-  addToCart,
-  updateQuantity,
-  removeFromCart,
-  userRole,
-  setUserRole,
-}) => {
-  return (
-    <div className="flex flex-col min-h-screen">
-      {/* Use Navbar component */}
-      <Navbar cartItems={cartItems} userRole={userRole} />
+        {/* Main Content */}
+        <div className="flex-grow">
+          <Routes>
+            {/* Homepage */}
+            <Route
+              path="/"
+              element={
+                <div>
+                  <HeroSlider />
 
-      {/* Main Content */}
-      <div className="flex-grow">
-        <Routes>
-          {/* Homepage Route */}
-          <Route
-            path="/"
-            element={
-              <div>
-                <HeroSlider />
+                  {/* ProductPage Section */}
+                  <section className="py-10">
+                    <div className="container mx-auto">
+                     
+                      <ProductPage addToCart={addToCart} cartItems={cartItems} />
+                    </div>
+                  </section>
 
-                {/* ProductPage Section */}
-                <section className="py-10">
-                  <div className="container mx-auto">
-                    <h2 className="text-2xl font-bold mb-6">Our Products</h2>
-                    <ProductPage addToCart={addToCart} cartItems={cartItems} />
-                  </div>
-                </section>
+                  {/* About Us Section */}
+                  <section className="bg-gray-100 py-10">
+                    <div className="container mx-auto">
+                      <AboutUs />
+                    </div>
+                  </section>
 
-                {/* About Us Section */}
-                <section className="bg-gray-100 py-10">
-                  <div className="container mx-auto">
-                    <AboutUs />
-                  </div>
-                </section>
+                  <StatsAndProducts />
 
-                <StatsAndProducts />
+                  {/* Testimonials Section */}
+                  <section className="bg-gray-100 py-10">
+                    <div className="container mx-auto">
+                      <Testimonials />
+                    </div>
+                  </section>
 
-                {/* Testimonials Section */}
-                <section className="bg-gray-100 py-10">
-                  <div className="container mx-auto">
-                    <Testimonials />
-                  </div>
-                </section>
+                  {/* Contact Section */}
+                  <section className="py-10">
+                    <div className="container mx-auto">
+                      <Contact />
+                    </div>
+                  </section>
 
-                {/* Contact Section */}
-                <section className="py-10">
-                  <div className="container mx-auto">
-                    <Contact />
-                  </div>
-                </section>
+                  {/* Footer Section */}
+                  <Footer />
+                </div>
+              }
+            />
 
-                {/* Footer Section */}
-                <Footer />
-              </div>
-            }
-          />
-          {/* Other Routes */}
-          <Route
-            path="/cart"
-            element={
-              <CartPage
-                cartItems={cartItems}
-                updateQuantity={updateQuantity}
-                removeFromCart={removeFromCart}
-              />
-            }
-          />
-          <Route path="/register" element={<Register setUserRole={setUserRole} />} />
-          <Route path="/login" element={<Login setUserRole={setUserRole} />} />
-          <Route path="/sell-animal" element={<SellAnimal />} />
-          <Route path="/farmer-dashboard" element={<FarmerDashboard />} />
-        </Routes>
+            {/* About Page */}
+            <Route
+              path="/about"
+              element={
+                <div className="container mx-auto py-10">
+                  <AboutUs />
+                </div>
+              }
+            />
+
+            {/* Contact Page */}
+            <Route
+              path="/contact"
+              element={
+                <div className="container mx-auto py-10">
+                  <Contact />
+                </div>
+              }
+            />
+
+            {/* Cart Page */}
+            <Route
+              path="/cart"
+              element={
+                <CartPage
+                  cartItems={cartItems}
+                  updateQuantity={updateQuantity}
+                  removeFromCart={removeFromCart}
+                />
+              }
+            />
+
+            {/* Register Page */}
+            <Route
+              path="/register"
+              element={<Register setUserRole={setUserRole} />}
+            />
+
+            {/* Login Page */}
+            <Route
+              path="/login"
+              element={<Login setUserRole={setUserRole} />}
+            />
+
+            {/* Sell Animal Page */}
+            <Route path="/sell-animal" element={<SellAnimal />} />
+
+            {/* Farmer Dashboard */}
+            <Route
+              path="/farmer-dashboard"
+              element={<FarmerDashboard />}
+            />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 };
 
