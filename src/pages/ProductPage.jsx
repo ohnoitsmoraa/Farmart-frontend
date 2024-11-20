@@ -1,4 +1,3 @@
-// ProductPage.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -23,7 +22,7 @@ const animalsData = [
   { id: 18, name: 'Goose', image: 'https://media.istockphoto.com/id/537545716/photo/chinese-dumb-duck-isolated-over-white-background.jpg?s=612x612&w=0&k=20&c=77bWjsEEOacnGo6Wb1xNUS6xNn7e4_iGHaR0tceNw0Q=', price: 700, age: 2, breed: 'Embden', status: 'Sold' },
   { id: 19, name: 'Cow', image: 'https://media.istockphoto.com/id/505137898/photo/holstein-cow.jpg?s=612x612&w=0&k=20&c=Jkgj5lzrC-B9pdlfalX3k1UjHmgV-cJsI1F17QFsIjc=', price: 50000, age: 4, breed: 'Fresian', status: 'Available' },
   { id: 20, name: 'Dog', image: 'https://media.istockphoto.com/id/146889930/photo/german-shepherd-isolated-on-white.jpg?s=612x612&w=0&k=20&c=SqkEVxHGRuHdW1faF8WIswsVs04QanAmausbNUaVE6Y=', price: 45000, age: 2, breed: 'German Shepherd', status: 'Available' }
-];
+  ];
 
 const ProductPage = ({ addToCart, cartItems }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -36,15 +35,17 @@ const ProductPage = ({ addToCart, cartItems }) => {
   return (
     <div className="p-4 items-center justify-center text-center">
       {/* Header with Cart Icon */}
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-3xl font-bold text-green-800">Animals</h1>
+      <div className="flex flex-col sm:flex-row items-center justify-between mb-6">
+        <h1 className="text-3xl font-bold text-green-800 mb-4 sm:mb-0">
+          Animals
+        </h1>
 
         {/* Search Bar and Cart Button */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-4 w-full sm:w-auto">
           <input
             type="text"
             placeholder="Search..."
-            className="p-2 border border-gray-300 rounded-md"
+            className="p-2 border border-gray-300 rounded-md w-full sm:w-auto"
             onChange={(e) => setSearchTerm(e.target.value)}
           />
 
@@ -61,21 +62,32 @@ const ProductPage = ({ addToCart, cartItems }) => {
       </div>
 
       {/* Animal Listings */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredAnimals.slice(0, displayLimit).map((animal) => (
-          <div key={animal.id} className="border rounded-lg p-6 bg-white shadow-lg shadow-gray-400 hover:shadow-2xl transform transition-shadow duration-300">
-            <img src={animal.image} alt={animal.name} className="h-56 w-full object-cover mb-2 rounded-md" />
-            <h3 className="text-xl font-semibold">{animal.name}</h3>
+          <div
+            key={animal.id}
+            className="border rounded-lg p-4 sm:p-6 bg-white shadow-lg hover:shadow-2xl transform transition-shadow duration-300"
+          >
+            <img
+              src={animal.image}
+              alt={animal.name}
+              className="h-48 w-full object-cover mb-2 rounded-md"
+            />
+            <h3 className="text-lg font-semibold">{animal.name}</h3>
             <p className="text-gray-700">Breed: {animal.breed}</p>
             <p className="text-gray-700">Age: {animal.age}</p>
             <p className="text-green-800 font-bold">Kes {animal.price}</p>
-            <p className={`font-bold ${animal.status === 'Available' ? 'text-green-600' : 'text-red-600'}`}>
+            <p
+              className={`font-bold ${
+                animal.status === 'Available' ? 'text-green-600' : 'text-red-600'
+              }`}
+            >
               {animal.status}
             </p>
             {animal.status === 'Available' && (
               <button
                 onClick={() => addToCart(animal)}
-                className="mt-4 bg-green-900 text-white px-4 py-2 rounded-md hover:bg-green-700"
+                className="mt-4 bg-green-900 text-white px-4 py-2 rounded-md hover:bg-green-700 "
               >
                 Add to cart
               </button>
@@ -88,7 +100,7 @@ const ProductPage = ({ addToCart, cartItems }) => {
       {filteredAnimals.length > displayLimit && (
         <button
           onClick={() => setDisplayLimit(displayLimit + 12)}
-          className="mt-4 p-10 bg-green-900 text-white py-2 rounded-md hover:bg-green-600"
+          className="mt-6 bg-green-900 text-white py-2 px-6 rounded-md hover:bg-green-700"
         >
           See All
         </button>
