@@ -52,16 +52,16 @@ const StatsAndProducts = () => {
   }, []);
 
   return (
-    <div className="bg-white py-16">
+    <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
       {/* Stats Section */}
       <div ref={statsRef} className="container mx-auto text-center mb-16">
-        <div className="flex justify-around items-center space-x-4 md:space-x-8">
+        <div className="flex flex-wrap justify-evenly gap-6">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="bg-white shadow-lg p-6 rounded-full text-center w-48 h-48 flex flex-col justify-center items-center border-2 border-green-700"
+              className="bg-white shadow-lg p-6 rounded-full text-center w-40 h-40 sm:w-48 sm:h-48 flex flex-col justify-evenly items-center border-2 border-green-700"
             >
-              <h2 className="text-5xl font-bold text-green-800">
+              <h2 className="text-3xl sm:text-5xl font-bold text-green-800">
                 {isVisible ? (
                   <CountUp end={stat.value} duration={2.5} />
                 ) : (
@@ -69,14 +69,16 @@ const StatsAndProducts = () => {
                 )}
                 +
               </h2>
-              <p className="text-green-600 text-lg mt-3">{stat.label}</p>
+              <p className="text-green-600 text-base sm:text-lg mt-3">
+                {stat.label}
+              </p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Products Section */}
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
         {products.map((product, index) => (
           <div
             key={index}
@@ -84,8 +86,10 @@ const StatsAndProducts = () => {
           >
             {/* Text Section */}
             <div className="text-center px-4">
-              <h3 className="text-3xl font-semibold mb-4">{product.name}</h3>
-              <p className="text-lg">{product.description}</p>
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2 sm:mb-4">
+                {product.name}
+              </h3>
+              <p className="text-sm sm:text-lg">{product.description}</p>
             </div>
           </div>
         ))}

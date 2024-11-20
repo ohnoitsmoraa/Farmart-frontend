@@ -37,7 +37,7 @@ const Testimonials = () => {
       image: "https://via.placeholder.com/80", 
     },
     {
-      text: "The platform is user-friendly, and I found exactly what I needed for my farm!",
+      text: "FarmArt is the game changer for secure transactions at fair prices !",
       name: "Abiud",
       role: "Buyer",
       image: "https://via.placeholder.com/80", 
