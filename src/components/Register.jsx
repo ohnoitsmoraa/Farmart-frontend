@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 const RegisterPage = () => {
   const [isFarmer, setIsFarmer] = useState(true);
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
     email: "",
     password: "",
+    farm_name: "",
     location: "", // New field for Farmer
   });
   const navigate = useNavigate();
@@ -26,14 +26,14 @@ const RegisterPage = () => {
     e.preventDefault();
     const role = isFarmer ? "Farmer" : "Buyer";
 
-    fetch("https://farmart-backend-2-okz3.onrender.com/register", {
+    fetch("http://127.0.0.1:5000/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...formData, role }),
+      body: JSON.stringify({ ...formData }),
     })
       .then((res) => {
         if (res.ok) return res.json();
-        throw new Error("Error during registration");
+        console.log(res);
       })
       .then((data) => {
         localStorage.setItem("user", JSON.stringify(data)); // Store user info in local storage
@@ -43,7 +43,7 @@ const RegisterPage = () => {
           navigate("/"); // Redirect buyers to the Animals page
         }
       })
-      .catch((err) => alert(err.message));
+      .catch((err) => console.log(err.message));
   };
 
   return (
@@ -99,17 +99,9 @@ const RegisterPage = () => {
             <div className="flex space-x-4">
               <input
                 type="text"
-                name="firstName"
-                placeholder="First Name"
-                value={formData.firstName}
-                onChange={handleChange}
-                className="w-1/2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
-              />
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Last Name"
-                value={formData.lastName}
+                name="name"
+                placeholder="Name"
+                value={formData.name}
                 onChange={handleChange}
                 className="w-1/2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
               />
@@ -119,6 +111,14 @@ const RegisterPage = () => {
               name="email"
               placeholder="Email"
               value={formData.email}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+            />
+             <input
+              type="text"
+              name="farm_name"
+              placeholder="farm_name"
+              value={formData.farm_name}
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
             />

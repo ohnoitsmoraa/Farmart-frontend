@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2"
 
 const LoginPage = () => {
   const [isFarmer, setIsFarmer] = useState(true);
   const [credentials, setCredentials] = useState({
-    email: "",
+    name: "",
     password: "",
   });
   const navigate = useNavigate();
@@ -18,30 +19,88 @@ const LoginPage = () => {
     setCredentials({ ...credentials, [name]: value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
 
-    const role = isFarmer ? "Farmer" : "Buyer";
+  //   const role = isFarmer ? "Farmer" : "Buyer";
 
-    fetch("https://farmart-backend-2-okz3.onrender.com/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...credentials, role }),
-    })
-      .then((res) => {
-        if (res.ok) return res.json();
-        throw new Error("Invalid credentials");
-      })
-      .then((data) => {
-        localStorage.setItem("user", JSON.stringify(data)); // Store user info
-        if (role === "Farmer") {
-          navigate("/farmer-dashboard"); // Redirect farmers to dashboard
-        } else {
-          navigate("/"); // Redirect buyers to homepage
-        }
-      })
-      .catch((err) => alert(err.message));
-  };
+  //   fetch("https://farmart-backend-1-tw0d.onrender.com/login", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ ...credentials, role }),
+  //   })
+  //     .then((res) => {
+  //       if (res.ok) return res.json();
+  //       // throw new Error("Invalid credentials");
+  //       console.log(res)
+  //     })
+  //     .then((data) => {
+  //       localStorage.setItem("user", JSON.stringify(data)); // Store user info
+  //       if (role === "Farmer") {
+  //         navigate("/farmer-dashboard"); // Redirect farmers to dashboard
+  //       } else {
+  //         navigate("/"); // Redirect buyers to homepage
+  //       }
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+const [loading, setLoading] = useState(true)
+const [error, setErrorMessage] = useState("")
+
+  const handleSubmit = async (e) => {
+		e.preventDefault();
+		setErrorMessage(""); 
+		setLoading(true); 
+
+		try {
+			const response = await fetch(
+				"http://127.0.0.1:5000/login",
+				{
+					method: "POST",
+					// eslint-disable-next-line no-undef
+					body: JSON.stringify({ ...credentials}),
+					headers: {
+						"Content-type": "application/json; charset=UTF-8",
+					},
+				}
+			);
+
+			const data = await response.json();
+
+			if (response.status === 200) {
+				localStorage.setItem("token", data.token);
+				Swal.fire({
+					title: "Login Successful!",
+					text: "Welcome",
+					icon: "success",
+					button: "Proceed",
+				}).then(() => {
+					navigate("/home"); 
+				});
+			} else if (response.status === 401) {
+				setErrorMessage(data.message || "Invalid credentials.");
+				Swal.fire({
+					title: "Error!",
+					text: data.message || "Invalid credentials.",
+					icon: "error",
+					button: "Try Again",
+				});
+			} else {
+				setErrorMessage(data.message || "Something went wrong.");
+				Swal.fire({
+					title: "Error!",
+					text: data.message || "Something went wrong.",
+					icon: "error",
+					button: "Try Again",
+				});
+			}
+		} catch (error) {
+			console.log("Error:", error);
+			setErrorMessage("Network error. Please try again later.");
+		} finally {
+			setLoading(false); 
+		}
+	};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -94,10 +153,10 @@ const LoginPage = () => {
           {/* Login Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={credentials.email}
+              type="name"
+              name="name"
+              placeholder="Name"
+              value={credentials.name}
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
             />
