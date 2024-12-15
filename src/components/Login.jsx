@@ -1,13 +1,15 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2"
+import Swal from "sweetalert2";
 
 const LoginPage = () => {
   const [isFarmer, setIsFarmer] = useState(true);
   const [credentials, setCredentials] = useState({
-    name: "",
+    email: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleToggle = () => {
@@ -19,35 +21,8 @@ const LoginPage = () => {
     setCredentials({ ...credentials, [name]: value });
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   const role = isFarmer ? "Farmer" : "Buyer";
-
-  //   fetch("https://farmart-backend-1-tw0d.onrender.com/login", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ ...credentials, role }),
-  //   })
-  //     .then((res) => {
-  //       if (res.ok) return res.json();
-  //       // throw new Error("Invalid credentials");
-  //       console.log(res)
-  //     })
-  //     .then((data) => {
-  //       localStorage.setItem("user", JSON.stringify(data)); // Store user info
-  //       if (role === "Farmer") {
-  //         navigate("/farmer-dashboard"); // Redirect farmers to dashboard
-  //       } else {
-  //         navigate("/"); // Redirect buyers to homepage
-  //       }
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
-const [loading, setLoading] = useState(true)
-const [error, setErrorMessage] = useState("")
-
   const handleSubmit = async (e) => {
+<<<<<<< Development
 		e.preventDefault();
 		setErrorMessage(""); 
 		setLoading(true); 
@@ -101,6 +76,65 @@ const [error, setErrorMessage] = useState("")
 			setLoading(false); 
 		}
 	};
+=======
+    e.preventDefault();
+    setErrorMessage("");
+    
+    if (!credentials.email || !credentials.password) {
+      setErrorMessage("Please fill in all fields.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const role = isFarmer ? "Farmer" : "Buyer"; 
+
+      const response = await fetch("https://farmart-backend-1-tw0d.onrender.com/login", {
+        method: "POST",
+        body: JSON.stringify({ ...credentials, role }), 
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+
+      const data = await response.json();
+
+      if (response.status === 200) {
+        localStorage.setItem("token", data.token); 
+        Swal.fire({
+          title: "Login Successful!",
+          text: "Welcome",
+          icon: "success",
+          confirmButtonText: "Proceed",
+        }).then(() => {
+          navigate(isFarmer ? "/farmer-dashboard" : "/"); 
+        });
+      } else if (response.status === 401) {
+        setErrorMessage(data.message || "Invalid credentials.");
+        Swal.fire({
+          title: "Error!",
+          text: data.message || "Invalid credentials.",
+          icon: "error",
+          confirmButtonText: "Try Again",
+        });
+      } else {
+        setErrorMessage(data.message || "Something went wrong.");
+        Swal.fire({
+          title: "Error!",
+          text: data.message || "Something went wrong.",
+          icon: "error",
+          confirmButtonText: "Try Again",
+        });
+      }
+    } catch (error) {
+      console.log("Error:", error);
+      setErrorMessage("Network error. Please try again later.");
+    } finally {
+      setLoading(false); 
+    }
+  };
+>>>>>>> main
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -150,13 +184,16 @@ const [error, setErrorMessage] = useState("")
             </button>
           </div>
 
+          {/* Error Message */}
+          {error && <div className="text-red-600 text-center mb-4">{error}</div>}
+
           {/* Login Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
-              type="name"
-              name="name"
-              placeholder="Name"
-              value={credentials.name}
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={credentials.email}
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
             />
@@ -170,9 +207,10 @@ const [error, setErrorMessage] = useState("")
             />
             <button
               type="submit"
-              className="w-full py-3 mt-4 bg-green-700 text-white font-bold rounded-lg hover:bg-green-800 transition duration-300"
+              className={`w-full py-3 mt-4 bg-green-700 text-white font-bold rounded-lg hover:bg-green-800 transition duration-300 ${loading ? 'cursor-not-allowed opacity-50' : ''}`}
+              disabled={loading} 
             >
-              Login
+              {loading ? "Logging in..." : "Login"}
             </button>
           </form>
 
