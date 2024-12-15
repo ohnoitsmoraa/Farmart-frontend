@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 const SellAnimal = () => {
   const [animal, setAnimal] = useState({
-    name: "",
+    type: "",
     age: "",
     breed: "",
     price: "",
-    imageUrl: "",
+   
   });
 
   const handleChange = (e) => {
@@ -17,7 +17,7 @@ const SellAnimal = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:5000/animals", {
+    fetch("http://127.0.0.1:5000/animals", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(animal),
@@ -37,9 +37,9 @@ const SellAnimal = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
-            name="name"
-            placeholder="Name"
-            value={animal.name}
+            name="type"
+            placeholder="type"
+            value={animal.type}
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
           />
@@ -67,14 +67,7 @@ const SellAnimal = () => {
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
           />
-          <input
-            type="text"
-            name="imageUrl"
-            placeholder="Image URL"
-            value={animal.imageUrl}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
-          />
+         
           <button
             type="submit"
             className="w-full py-3 mt-4 bg-green-700 text-white font-bold rounded-lg hover:bg-green-800 transition duration-300"

@@ -22,6 +22,61 @@ const LoginPage = () => {
   };
 
   const handleSubmit = async (e) => {
+<<<<<<< Development
+		e.preventDefault();
+		setErrorMessage(""); 
+		setLoading(true); 
+
+		try {
+			const response = await fetch(
+				"http://127.0.0.1:5000/login",
+				{
+					method: "POST",
+					// eslint-disable-next-line no-undef
+					body: JSON.stringify({ ...credentials}),
+					headers: {
+						"Content-type": "application/json; charset=UTF-8",
+					},
+				}
+			);
+
+			const data = await response.json();
+
+			if (response.status === 200) {
+				localStorage.setItem("token", data.token);
+				Swal.fire({
+					title: "Login Successful!",
+					text: "Welcome",
+					icon: "success",
+					button: "Proceed",
+				}).then(() => {
+					navigate("/home"); 
+				});
+			} else if (response.status === 401) {
+				setErrorMessage(data.message || "Invalid credentials.");
+				Swal.fire({
+					title: "Error!",
+					text: data.message || "Invalid credentials.",
+					icon: "error",
+					button: "Try Again",
+				});
+			} else {
+				setErrorMessage(data.message || "Something went wrong.");
+				Swal.fire({
+					title: "Error!",
+					text: data.message || "Something went wrong.",
+					icon: "error",
+					button: "Try Again",
+				});
+			}
+		} catch (error) {
+			console.log("Error:", error);
+			setErrorMessage("Network error. Please try again later.");
+		} finally {
+			setLoading(false); 
+		}
+	};
+=======
     e.preventDefault();
     setErrorMessage("");
     
@@ -79,6 +134,7 @@ const LoginPage = () => {
       setLoading(false); 
     }
   };
+>>>>>>> main
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
