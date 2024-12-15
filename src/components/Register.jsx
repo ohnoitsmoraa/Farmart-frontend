@@ -7,6 +7,7 @@ const RegisterPage = () => {
     name: "",
     email: "",
     password: "",
+    farm_name: "",
     location: "", // New field for Farmer
   });
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const RegisterPage = () => {
     e.preventDefault();
     const role = isFarmer ? "Farmer" : "Buyer";
 
-    fetch("http://127.0.0.1:5555/register", {
+    fetch("http://127.0.0.1:5000/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...formData }),
@@ -110,6 +111,14 @@ const RegisterPage = () => {
               name="email"
               placeholder="Email"
               value={formData.email}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+            />
+             <input
+              type="text"
+              name="farm_name"
+              placeholder="farm_name"
+              value={formData.farm_name}
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
             />
