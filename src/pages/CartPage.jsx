@@ -28,7 +28,7 @@ const CartPage = ({ cartItems, updateQuantity, removeFromCart }) => {
       setIsProcessing(true);
       setPaymentStatus("");
 
-      const response = await axios.post("http://127.0.0.1:5000/mpesa-payment", {
+      const response = await axios.post("https://farmart-backend-2-okz3.onrender.com/mpesa payment", {
         phone_number: phoneNumber,
         amount: total.toFixed(2),
       });
